@@ -1,25 +1,38 @@
 // import PropType from 'prop-types';
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
 
 import { ButtonAddFriend, Title } from './AddContactForm.styled';
 
 class AddContactForm extends Component {
   state = {
     name: '',
-    phone: '',
+    number: '',
   };
 
   handleInput = e => {
     const value = e.currentTarget.value;
-    console.log(e.currentTarget.name);
+    const name = e.currentTarget.name;
 
-    // this.setState({
-    //   name: newText,
-    // });
+    this.setState({
+      [name]: value,
+    });
   };
 
-  handleSubmit = () => {
-    return;
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const newContact = {
+      id: nanoid(),
+      name: this.state.name,
+      number: this.state.number,
+    };
+    this.props.onSubmit(newContact);
+
+    this.setState({
+      name: '',
+      number: '',
+    });
   };
 
   render() {
@@ -38,19 +51,14 @@ class AddContactForm extends Component {
         <Title>Phone number</Title>
         <input
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          value={this.state.phone}
+          value={this.state.number}
           onChange={this.handleInput}
         />
-        <ButtonAddFriend
-          type="submit"
-          // onSubmit={ }
-        >
-          Add contact
-        </ButtonAddFriend>
+        <ButtonAddFriend type="submit">Add contact</ButtonAddFriend>
       </form>
     );
   }
