@@ -15,18 +15,20 @@ class App extends Component {
 
     this.setState(ps => {
       console.log(ps.contacts);
-      // return {
-      //   contacts: [...ps.contacts].push(newContact),
-      // };
+      return {
+        contacts: [...ps.contacts, newContact],
+      };
     });
   };
 
   render() {
+    const listToRender = this.state.contacts;
+    console.log(listToRender);
     return (
       <Wrapper>
         <div>
           <AddContactForm onSubmit={this.addContactHandler} />
-          <ListOfContacts listToRender={this.state.contacts} />
+          <ListOfContacts listToRender={listToRender} />
         </div>
       </Wrapper>
     );
@@ -34,10 +36,12 @@ class App extends Component {
 }
 
 const Wrapper = styled.div`
-  height: 100vh;
+  /* height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  margin-top: 15%;
+  margin-left: 30%;
   font-size: 30px;
   color: #010101;
 `;
