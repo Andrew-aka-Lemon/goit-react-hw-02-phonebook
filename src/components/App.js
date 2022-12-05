@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import AddContactForm from './AddContactForm';
 import ListOfContacts from './ListOfContacts';
+import { Title } from './AddContactForm/AddContactForm.styled';
 
 class App extends Component {
   state = {
@@ -27,7 +28,9 @@ class App extends Component {
     return (
       <Wrapper>
         <div>
+          <h1>Phonebook</h1>
           <AddContactForm onSubmit={this.addContactHandler} />
+          <Title>Contacts</Title>
           <ListOfContacts listToRender={listToRender} />
         </div>
       </Wrapper>

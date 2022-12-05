@@ -8,7 +8,6 @@ class ListOfContacts extends Component {
     console.log(contacts);
     return (
       <div>
-        <h3>Contacts</h3>
         <ul>
           {contacts.map(c => {
             return (
