@@ -27,6 +27,7 @@ class AddContactForm extends Component {
       name: this.state.name,
       number: this.state.number,
     };
+
     this.props.onSubmit(newContact);
 
     this.setState({

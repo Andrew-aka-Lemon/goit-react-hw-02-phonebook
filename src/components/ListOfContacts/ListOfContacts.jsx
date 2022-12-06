@@ -5,7 +5,7 @@ class ListOfContacts extends Component {
 
   render() {
     const contacts = this.props.listToRender;
-    console.log(contacts);
+    // console.log(contacts);
     return (
       <div>
         <ul>
