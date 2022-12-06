@@ -42,7 +42,13 @@ class App extends Component {
     this.setState({ filter: f });
   };
 
-  contactDeleter = () => {};
+  contactDeleter = id => {
+    this.setState(ps => {
+      return {
+        contacts: ps.contacts.filter(contact => contact.id !== id),
+      };
+    });
+  };
 
   render() {
     const { contacts, filter } = this.state;

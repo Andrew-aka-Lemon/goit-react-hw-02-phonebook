@@ -9,13 +9,13 @@ class ListOfContacts extends Component {
     return (
       <div>
         <ul>
-          {listToRender.map(c => {
+          {listToRender.map(({ id, name, number }) => {
             return (
-              <Lishka key={c.id}>
+              <Lishka key={id}>
                 <span>
-                  {c.name}: {c.number}
+                  {name}: {number}
                 </span>
-                <NotUglyBtn type="button" onClick={onDeleteBtn}>
+                <NotUglyBtn type="button" onClick={() => onDeleteBtn(id)}>
                   Delete
                 </NotUglyBtn>
               </Lishka>
