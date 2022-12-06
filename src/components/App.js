@@ -31,13 +31,7 @@ class App extends Component {
       return;
     }
 
-    //
-    //   return;
-    // }
-    // console.log(newContact.name.toLowerCase());
-
     this.setState(ps => {
-      // console.log(ps.contacts);
       return {
         contacts: [...ps.contacts, newContact],
       };
@@ -48,14 +42,14 @@ class App extends Component {
     this.setState({ filter: f });
   };
 
+  contactDeleter = () => {};
+
   render() {
     const { contacts, filter } = this.state;
     const filerItem = filter.toLowerCase();
     const listToRender = contacts.filter(contact => {
       return contact.name.toLowerCase().includes(filerItem);
     });
-
-    // console.log(this.state.contacts[0].name.toLowerCase());
 
     return (
       <Wrapper>
@@ -67,7 +61,10 @@ class App extends Component {
             filterText={this.state.filter}
           />
           <Title>Contacts</Title>
-          <ListOfContacts listToRender={listToRender} />
+          <ListOfContacts
+            listToRender={listToRender}
+            onDeleteBtn={this.contactDeleter}
+          />
         </div>
       </Wrapper>
     );
@@ -75,14 +72,15 @@ class App extends Component {
 }
 
 const Wrapper = styled.div`
-  /* height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
   margin-top: 50px;
   margin-left: 30%;
   font-size: 20px;
   color: #010101;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 export { App };
