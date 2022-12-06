@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 class ListOfContacts extends Component {
   state = {};
@@ -42,5 +43,16 @@ const Lishka = styled.li`
   display: flex;
   align-items: center;
 `;
+
+ListOfContacts.propTypes = {
+  listToRender: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onDeleteBtn: PropTypes.func,
+};
 
 export default ListOfContacts;

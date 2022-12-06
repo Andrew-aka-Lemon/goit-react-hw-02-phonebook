@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 class Filter extends Component {
   render() {
@@ -24,5 +25,10 @@ const Title = styled.p`
   margin: 0;
   margin-top: 10px;
 `;
+
+Filter.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  filterText: PropTypes.string.isRequired,
+};
 
 export default Filter;
